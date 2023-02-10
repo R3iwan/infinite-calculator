@@ -68,6 +68,10 @@ def add(num1, num2, base):
         decimal2 = hexadecimal_to_decimal(num2)
         decimal_sum = decimal1 + decimal2
         return decimal_to_hexadecimal(decimal_sum)
+    elif base == 'dec':
+        num1 = float(num1)
+        num2 = float(num2)
+        return num1 + num2
 
 def subtract(num1, num2, base):
     if base == 'bin':
@@ -85,6 +89,10 @@ def subtract(num1, num2, base):
         decimal2 = hexadecimal_to_decimal(num2)
         decimal_diff = decimal1 - decimal2
         return decimal_to_hexadecimal(decimal_diff)
+    elif base == 'dec':
+        num1 = float(num1)
+        num2 = float(num2)
+        return num1 - num2
 
 
 def multiply(num1, num2, base):
@@ -103,6 +111,10 @@ def multiply(num1, num2, base):
         decimal2 = hexadecimal_to_decimal(num2)
         decimal_product = decimal1 * decimal2
         return decimal_to_hexadecimal(decimal_product)
+    elif base == 'dec':
+        num1 = float(num1)
+        num2 = float(num2)
+        return num1 * num2
 
 
 def divide(num1, num2, base):
@@ -121,6 +133,10 @@ def divide(num1, num2, base):
         decimal2 = hexadecimal_to_decimal(num2)
         decimal_quotient = decimal1 / decimal2
         return decimal_to_hexadecimal(decimal_quotient)
+    elif base == 'dec':
+        num1 = float(num1)
+        num2 = float(num2)
+        return num1 / num2
 
 
 def perform_operation(num1, num2, operation, base):
@@ -132,18 +148,26 @@ def perform_operation(num1, num2, operation, base):
         return multiply(num1, num2, base)
     elif operation == '/':
         return divide(num1, num2, base)
+    elif operation == 'c':
+        print("Choose convert type: ")
+        print("1)Binary to Decimal")
+        print("2)Binary to Octal")
+        print("3)Binary to Hexadecimal")
+        print("4)Decimal to Binary")
+        print("5)Octal to Binary")
+        print("6)Hexadecimal to Binary")
 
 
 if __name__ == '__main__':
     print("Infinite Calculator: Decimal, Binary, Octal and Hexadecimal")
     while True:
         num1 = input("Enter the first number: ")
+        base = input("Enter the number system (bin, oct, hex, dec): ").lower()
+        operation = input("Enter the operation (+, -, *, /, c): ")
         num2 = input("Enter the second number: ")
-        base = input("Enter the number system (bin, oct, hex, dec): ")
-        operation = input("Enter the operation (+, -, *, /): ")
         result = perform_operation(num1, num2, operation, base)
-        print("Result: ", result)
-        repeat = input("Do you want to perform another operation? (yes/no)")
+        print("Result:", result)
+        repeat = input("Do you want to perform another operation? (yes/no) ")
         if repeat.lower() != 'yes':
             break
     print("Exiting Infinite Calculator")
